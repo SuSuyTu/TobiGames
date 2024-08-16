@@ -9,8 +9,8 @@ public class BotCtrl : NewMonoBehaviour
     public Transform Model => model;
     [SerializeField] protected Animator animator;
     public Animator Animator => animator;
-    [SerializeField] protected Backpack backpack;
-    public Backpack Backpack => backpack;
+    [SerializeField] protected BotBackpack botBackpack;
+    public BotBackpack BotBackpack => botBackpack;
     [SerializeField] protected Ground ground;
     public Ground Ground => ground;
     [SerializeField] protected BotGameSession botGameSession;
@@ -28,7 +28,7 @@ public class BotCtrl : NewMonoBehaviour
         LoadModel();
         LoadAnimator();
         LoadGrounds();
-        LoadBackpack();
+        LoadBotBackpack();
         LoadBotGameSession();
         LoadNavMeshAgent();
     }
@@ -52,11 +52,11 @@ public class BotCtrl : NewMonoBehaviour
         Debug.LogWarning(transform.name + ": LoadGrounds", gameObject);
     }
 
-    protected virtual void LoadBackpack()
+    protected virtual void LoadBotBackpack()
     {
-        if (this.backpack != null) return;
-        this.backpack = GetComponentInChildren<Backpack>();
-        Debug.LogWarning(transform.name + ": LoadBackpack", gameObject);
+        if (this.botBackpack != null) return;
+        this.botBackpack = GetComponentInChildren<BotBackpack>();
+        Debug.LogWarning(transform.name + ": LoadBotBackpack", gameObject);
     }
     protected virtual void LoadBotGameSession()
     {

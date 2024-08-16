@@ -50,6 +50,7 @@ public class CharacterPickUp : NewMonoBehaviour
         {
             EnterNextGround();
 
+            other.GetComponentInParent<Bridge>().SetIsFinished(true);
             other.gameObject.SetActive(false);
         }
     }

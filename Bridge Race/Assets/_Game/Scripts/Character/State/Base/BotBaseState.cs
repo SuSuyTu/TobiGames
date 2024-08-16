@@ -35,4 +35,9 @@ public class BotBaseState : CharacterBaseState
     {
         
     }
+
+    public virtual void OnTriggerEnter(BotStateManager state, Collider other)
+    {
+      
+    }
 }

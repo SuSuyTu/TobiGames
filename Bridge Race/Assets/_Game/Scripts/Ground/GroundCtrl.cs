@@ -11,12 +11,15 @@ public class GroundCtrl : NewMonoBehaviour
     public BrickManager BrickManager => brickManager; 
     [SerializeField] protected ColorManager colorManager;
     public ColorManager ColorManager => colorManager; 
+    [SerializeField] protected BridgeManager bridgeManager;
+    public BridgeManager BridgeManager => bridgeManager;
     protected override void Reset()
     {
         base.Reset();
         LoadGridManager();
         LoadBrickManager();
         LoadColorManager();
+        LoadBridgeManager();
     }
 
     protected virtual void LoadGridManager()
@@ -37,5 +40,12 @@ public class GroundCtrl : NewMonoBehaviour
         if (this.colorManager != null) return;
         this.colorManager = GetComponentInChildren<ColorManager>();
         Debug.LogWarning(transform.name + ": LoadColorManager", gameObject);
+    }
+
+    protected virtual void LoadBridgeManager()
+    {
+        if (this.bridgeManager != null) return;
+        this.bridgeManager = GetComponentInChildren<BridgeManager>();
+        Debug.LogWarning(transform.name + ": LoadBridgeManager", gameObject);
     }
 }

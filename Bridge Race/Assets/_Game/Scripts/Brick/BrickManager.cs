@@ -14,6 +14,7 @@ public class BrickManager : NewMonoBehaviour
     public List<Color> PickedUpBrickColor => pickedUpBrickColor;
     [SerializeField] protected List<Transform> spawnedBricks = new List<Transform>();
     public List<Transform> SpawnedBricks => spawnedBricks;
+    
     [SerializeField] protected float groundHeight;
 
     [SerializeField] protected bool isStartOfTheStage;
@@ -44,7 +45,7 @@ public class BrickManager : NewMonoBehaviour
     {
         if (isStartOfTheStage)
         {
-            StartCoroutine(nameof(SpawnBrickGrid));
+            StartCoroutine(nameof(SpawnBrickGridNewGround));
         }
         if (isStartOfTheStage || unspawnedGrid.Count == 0 || pickedUpBrickColor.Count == 0 || groundCtrl.ColorManager.ColorSpawnList.Count == 0) return;
         StartCoroutine(nameof(RespawnBrick));
@@ -77,6 +78,36 @@ public class BrickManager : NewMonoBehaviour
                 }
             }
         }
+        isStartOfTheStage = false;
+    }
+
+    public virtual IEnumerator SpawnBrickGridNewGround()
+    {
+        Color spawnColor = groundCtrl.ColorManager.SpawnNewGroundColor;
+        yield return null;
+            for(int j = 0; j < brickPerCharacter; j++)
+            {
+                Vector2Int position = groundCtrl.GridManager.GetRandomSpawnPoint();
+                if (!position.Equals(Vector2Int.zero))
+                {
+                    Vector3 spawnPos = new Vector3(position.x, 
+                                                    groundHeight + 0.06934825f, 
+                                                    position.y);
+                    BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[position];
+                    brickSpawnPoint.isSpawned = true;
+                    brickSpawnPoint.color = spawnColor;
+                    
+
+                    Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
+                    newBrick.gameObject.SetActive(true);
+                    spawnedBricks.Add(newBrick);
+                }
+                else
+                {
+                    j--;
+                }
+            }
+        
         isStartOfTheStage = false;
     }
 

@@ -23,15 +23,15 @@ public class BotBackpack : Backpack
         }
         else
         {
-            Vector3 newPos = botBrickStack.Peek().transform.position;
+            Vector3 newPos = this.botBrickStack.Peek().transform.position;
             newPos.y += 0.5f;  
             brick.transform.position = newPos;
             brick.transform.SetParent(this.transform);
         }
 
         brick.transform.localRotation = Quaternion.Euler(0, 90, 0);
-        botBrickStack.Push(brick.GetComponent<Brick>());
-        //Debug.Log(brickStack.Count);
+        this.botBrickStack.Push(brick.GetComponent<Brick>());
+        //Debug.Log(botBrickStack.Count);
     }
 
     public override void AddFallenStack(GameObject brick)
@@ -55,5 +55,25 @@ public class BotBackpack : Backpack
 
         brick.transform.localRotation = Quaternion.Euler(0, 90, 0);
         botBrickStack.Push(brick.GetComponent<Brick>());
+    }
+
+    public override void RemoveStack()
+    {
+        //Debug.Log("before remove: " + botBrickStack.Count);
+        int brickCount = this.transform.childCount;
+        if (brickCount == 0)
+        {
+            Debug.Log("Cannot remove stack");
+            return;
+        }
+
+        GameObject topBrick = this.transform.GetChild(brickCount - 1).gameObject;
+        this.botBrickStack.Pop();
+        BrickSpawner.Instance.Despawn(topBrick.transform);
+        //Debug.Log("before remove: " + botBrickStack.Count);
+    }
+    public override bool IsAlreadyHasBricksStack()
+    {
+        return this.botBrickStack.Count == 0;
     }
 }

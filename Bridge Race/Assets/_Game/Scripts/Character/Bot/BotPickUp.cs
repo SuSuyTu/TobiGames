@@ -19,34 +19,34 @@ public class BotPickUp : CharacterPickUp
     }
     protected override void OnTriggerEnter(Collider other) 
     {
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Brick") 
             && other.gameObject.GetComponent<Brick>().Color.ToString() == botCtrl.Color.ToString())
         {
-            botCtrl.Backpack.AddStack(other.gameObject);
+            botCtrl.BotBackpack.AddStack(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Fallen Brick"))
         {
-            botCtrl.Backpack.AddFallenStack(other.gameObject);
+            botCtrl.BotBackpack.AddFallenStack(other.gameObject);
         }
 
-        if (other.gameObject.CompareTag("NextStage"))
-        {
-            EnterNextGround();
+        // if (other.gameObject.CompareTag("NextStage"))
+        // {
+        //     EnterNextGround();
 
-            other.gameObject.SetActive(false);
-        }
+        //     other.gameObject.SetActive(false);
+        // }
     }
 
-    protected override void EnterNextGround()
-    {
-        botCtrl.BotGameSession.CurrentColorManager.RemoveFromList(botCtrl.Color);
-        botCtrl.BotGameSession.CurrentBrickManager.RemoveColor(botCtrl.Color);
+    // protected override void EnterNextGround()
+    // {
+    //     botCtrl.BotGameSession.CurrentColorManager.RemoveFromList(botCtrl.Color);
+    //     botCtrl.BotGameSession.CurrentBrickManager.RemoveColor(botCtrl.Color);
 
-        botCtrl.BotGameSession.SetCurrentGround(botCtrl.BotGameSession.GetNextGround());
-        botCtrl.BotGameSession.FindCurrentManager();
+    //     botCtrl.BotGameSession.SetCurrentGround(botCtrl.BotGameSession.GetNextGround());
+    //     botCtrl.BotGameSession.FindCurrentManager();
 
-        botCtrl.BotGameSession.CurrentColorManager.AddToList(botCtrl.Color);
-        botCtrl.BotGameSession.CurrentBrickManager.IsStartOfTheStage();
-    }
+    //     botCtrl.BotGameSession.CurrentColorManager.AddToList(botCtrl.Color);
+    //     botCtrl.BotGameSession.CurrentBrickManager.IsStartOfTheStage();
+    // }
 }

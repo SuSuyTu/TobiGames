@@ -15,6 +15,10 @@ public class BotIdlingState : BotBaseState
     }
     public override void UpdateState(BotStateManager state)
     {
-        state.SwitchState(state.botCollectingState);
+        if (state.botCollectingState.SetTargetForEnemy(state))
+        // if (state.hasTargetBrick)
+        {
+            state.SwitchState(state.botCollectingState);
+        }
     }
 }

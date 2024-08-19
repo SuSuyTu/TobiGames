@@ -13,6 +13,7 @@ public class FinishGround : NewMonoBehaviour
             //     mesh.material = other.GetComponent<PlayerController>().playerProperty.m_Material;
             // }
             // other.GetComponent<PlayerCtrl>().MoveToFinishPos(finishPos);
+            Time.timeScale = 0;
             Camera.main.GetComponent<CameraFollow>().LevelFinished(other.gameObject.transform);
 
             if (other.GetComponent<PlayerCtrl>() != null)

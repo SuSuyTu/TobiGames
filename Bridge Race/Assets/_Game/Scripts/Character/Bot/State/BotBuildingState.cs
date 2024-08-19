@@ -16,10 +16,9 @@ public class BotBuildingState : BotBaseState
 
         else
         {
+            state.botIdlingState.isIdlingIfinity = true;
             state.SwitchState(state.botIdlingState);
         }
-        
-        
     }
 
     public override void ExitState(BotStateManager state)
@@ -54,12 +53,9 @@ public class BotBuildingState : BotBaseState
 
     protected virtual bool SetTargetBridge(BotStateManager state)
     {
-        Debug.Log("1");
         if (state.BotCtrl.BotGameSession.CurrentBridgeManager.Bridges == null) return false;
-        Debug.Log("2");
         state.targetBridge = state.BotCtrl.BotGameSession.CurrentBridgeManager.GetRadomBridge();
         if (state.targetBridge.IsFinished) return false;
-        Debug.Log("3");
         return true;
     }
 

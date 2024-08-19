@@ -17,7 +17,7 @@ public class BotIdlingState : BotBaseState
     public override void UpdateState(BotStateManager state)
     {
         if (isIdlingIfinity) return;
-        if (state.botCollectingState.SetTargetForEnemy(state))
+        else if (state.botCollectingState.SetTargetForEnemy(state))
         {
             state.SwitchState(state.botCollectingState);
         }

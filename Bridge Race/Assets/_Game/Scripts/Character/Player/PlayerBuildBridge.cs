@@ -6,12 +6,11 @@ public class PlayerBuildBridge : NewMonoBehaviour
 {
     protected virtual void FixedUpdate() 
     {
-        StartCoroutine(Build());
+        Build();
     }
 
-    public IEnumerator Build()
+    protected virtual void Build()
     {
-        yield return new WaitForSecondsRealtime(0.2f);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {

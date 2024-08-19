@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GridManager : NewMonoBehaviour
@@ -17,8 +16,10 @@ public class GridManager : NewMonoBehaviour
 
     protected Dictionary<Vector2Int, BrickSpawnPoint> grid = new Dictionary<Vector2Int, BrickSpawnPoint>();
     public Dictionary<Vector2Int, BrickSpawnPoint> Grid => grid;
+
     protected override void Awake() 
     {
+        Time.timeScale = 1;
         CreateGrid();
         base.Awake();
     }

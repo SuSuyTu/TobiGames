@@ -16,7 +16,6 @@ public class BotEnterNextGroundState : BotBaseState
     protected virtual void EnterNextGround(BotStateManager state)
     {
         state.BotCtrl.BotGameSession.CurrentColorManager.RemoveFromList(state.BotCtrl.Color);
-        state.BotCtrl.BotGameSession.CurrentBrickManager.RemoveColor(state.BotCtrl.Color);
 
         state.BotCtrl.BotGameSession.SetCurrentGround(state.BotCtrl.BotGameSession.GetNextGround());
         state.BotCtrl.BotGameSession.FindCurrentManager();

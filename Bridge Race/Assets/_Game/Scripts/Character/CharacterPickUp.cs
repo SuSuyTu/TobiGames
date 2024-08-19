@@ -46,8 +46,8 @@ public class CharacterPickUp : NewMonoBehaviour
 
     protected virtual void EnterNextGround()
     {
+
         PlayerCtrl.Instance.PlayerGameSession.CurrentColorManager.RemoveFromList(PlayerCtrl.Instance.Color);
-        PlayerCtrl.Instance.PlayerGameSession.CurrentBrickManager.RemoveColor(PlayerCtrl.Instance.Color);
 
         PlayerCtrl.Instance.PlayerGameSession.SetCurrentGround(PlayerCtrl.Instance.PlayerGameSession.GetNextGround());
         PlayerCtrl.Instance.PlayerGameSession.FindCurrentManager();

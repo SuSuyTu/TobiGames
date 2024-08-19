@@ -14,4 +14,10 @@ public class UIMainMenuManager : NewMonoBehaviour
     {
         Application.Quit();
     }
+
+    public virtual void LoadLevel(int levelId)
+    {
+        string levelName = "Level " + levelId;
+        SceneManager.LoadScene(levelName);
+    }
 }

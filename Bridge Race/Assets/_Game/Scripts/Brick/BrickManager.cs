@@ -12,9 +12,7 @@ public class BrickManager : NewMonoBehaviour
     public Queue<Vector2Int> UnspawnedGrid => unspawnedGrid;
     [SerializeField] protected List<Color> pickedUpBrickColor = new List<Color>();
     public List<Color> PickedUpBrickColor => pickedUpBrickColor;
-    [SerializeField] protected List<Transform> spawnedBricks = new List<Transform>();
-    public List<Transform> SpawnedBricks => spawnedBricks;
-    
+
     [SerializeField] protected float groundHeight;
 
     [SerializeField] protected bool isStartOfTheStage;
@@ -37,7 +35,6 @@ public class BrickManager : NewMonoBehaviour
         base.Awake();
         if (isStartOfTheStage)
         {
-            //StartCoroutine(nameof(SpawnBrickGrid));
             SpawnBrickGrid();
         }
     }
@@ -69,7 +66,6 @@ public class BrickManager : NewMonoBehaviour
 
                     Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
                     newBrick.gameObject.SetActive(true);
-                    spawnedBricks.Add(newBrick);
                 }
                 else
                 {
@@ -79,36 +75,6 @@ public class BrickManager : NewMonoBehaviour
         }
         isStartOfTheStage = false;
     }
-
-    // public virtual IEnumerator SpawnBrickGrid()
-    // {
-    //     yield return null;
-    //     for(int i = 0; i < groundCtrl.ColorManager.ColorSpawnList.Count; i++)
-    //     {
-    //         for(int j = 0; j < brickPerCharacter; j++)
-    //         {
-    //             Vector2Int position = groundCtrl.GridManager.GetRandomSpawnPoint();
-    //             if (!position.Equals(Vector2Int.zero))
-    //             {
-    //                 Vector3 spawnPos = new Vector3(position.x, 
-    //                                                 groundHeight, 
-    //                                                 position.y);
-    //                 BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[position];
-    //                 brickSpawnPoint.isSpawned = true;
-    //                 brickSpawnPoint.color = groundCtrl.ColorManager.ColorSpawnList[i];
-
-    //                 Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
-    //                 newBrick.gameObject.SetActive(true);
-    //                 spawnedBricks.Add(newBrick);
-    //             }
-    //             else
-    //             {
-    //                 j--;
-    //             }
-    //         }
-    //     }
-    //     isStartOfTheStage = false;
-    // }
 
     public virtual IEnumerator SpawnBrickGridNewGround()
     {
@@ -129,7 +95,6 @@ public class BrickManager : NewMonoBehaviour
 
                     Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
                     newBrick.gameObject.SetActive(true);
-                    spawnedBricks.Add(newBrick);
                 }
                 else
                 {
@@ -160,9 +125,6 @@ public class BrickManager : NewMonoBehaviour
             Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
             newBrick.gameObject.SetActive(true);
         }
-
-        // Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
-        // newBrick.gameObject.SetActive(true);
         
         StopAllCoroutines();
     }
@@ -187,37 +149,8 @@ public class BrickManager : NewMonoBehaviour
         return index;
     }
 
-    public virtual void RemoveColor(Color characterColor)
-    {
-        PickedUpBrickColor.RemoveAll(color => color == characterColor);
-        foreach (BrickSpawnPoint brickSpawnPoint in groundCtrl.GridManager.Grid.Values.ToList<BrickSpawnPoint>())
-        {
-            if (brickSpawnPoint.color == characterColor)
-            {
-                if (GetBrickFromCoordinate(brickSpawnPoint.coordinates) == null) return;
-                BrickSpawner.Instance.Despawn(GetBrickFromCoordinate(brickSpawnPoint.coordinates));
-            }
-        }
-    }
-
-    protected virtual Transform GetBrickFromCoordinate(Vector2Int coordinates)
-    {
-        Vector3 position = new Vector3();
-        position.x = coordinates.x;
-        position.z = coordinates.y;
-
-        foreach (Transform brick in SpawnedBricks)
-        {
-            if (brick.position.x == position.x && brick.position.z == position.z)
-            {
-                return brick;
-            }
-        }
-        return null;
-    }
     public virtual void IsStartOfTheStage()
     {
         isStartOfTheStage = true;
     }
-
 }

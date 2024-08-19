@@ -19,8 +19,8 @@ public class GridManager : NewMonoBehaviour
     public Dictionary<Vector2Int, BrickSpawnPoint> Grid => grid;
     protected override void Awake() 
     {
-        base.Awake();
         CreateGrid();
+        base.Awake();
     }
 
     protected virtual void CreateGrid()

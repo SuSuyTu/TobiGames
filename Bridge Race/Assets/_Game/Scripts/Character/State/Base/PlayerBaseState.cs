@@ -19,6 +19,11 @@ public class PlayerBaseState : CharacterBaseState
       
     }
 
+    public virtual void OnTriggerEnter(PlayerStateManager state, Collider other) 
+    {
+      
+    }
+
     public virtual void UpdateState(PlayerStateManager state)
     {
        

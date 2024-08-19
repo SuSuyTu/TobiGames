@@ -14,12 +14,15 @@ public class BotStateManager : CharacterStateManager
     public BotCollectingState botCollectingState = new BotCollectingState();
     public BotBuildingState botBuildingState = new BotBuildingState();
     public BotEnterNextGroundState botEnterNextGroundState = new BotEnterNextGroundState();
+    public BotWinDancingState botWinDancingState = new BotWinDancingState();
 
     public bool hasTargetBrick;
     protected override void Start()
     {
+        base.Start();
         currentState = botIdlingState;
         currentState.EnterState(this);
+        
     }
 
     protected override void OnCollisionEnter(Collision other)

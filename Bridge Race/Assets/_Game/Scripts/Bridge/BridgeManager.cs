@@ -7,6 +7,7 @@ using UnityEngine;
 public class BridgeManager : NewMonoBehaviour
 {
     [SerializeField] protected List<Bridge> bridges = new List<Bridge>();
+    public List<Bridge> Bridges => bridges;
 
     protected override void Reset()
     {
@@ -29,23 +30,44 @@ public class BridgeManager : NewMonoBehaviour
 
     public virtual Bridge GetRadomBridge()
     {
-        System.Random random = new System.Random();
-        int randomIndex = random.Next(bridges.Count);
-        return bridges[randomIndex];
+        if (!CheckBridgeLeft())
+        {
+            System.Random random = new System.Random();
+            int randomIndex = random.Next(bridges.Count);
+            return bridges[randomIndex];
+        }
+        return null;
+        // if (bridges == null) return null;
+        // System.Random random = new System.Random();
+        // int randomIndex = random.Next(bridges.Count);
+        // return bridges[randomIndex];
+    }
+
+    protected virtual bool CheckBridgeLeft()
+    {
+        return bridges.Count == 0;
     }
 
     public virtual int GetNumOfStep()
     {
-        return bridges[0].Steps.Count;
+        if (bridges != null) return bridges[0].Steps.Count;
+        return 0;
     }
 
     protected virtual void RemoveFinishedBridge()
     {
-        foreach (Bridge bridge in bridges)
+        // foreach (Bridge bridge in bridges)
+        // {
+        //     if (bridge.IsFinished)
+        //     {
+        //         bridges.Remove(bridge);
+        //     }
+        // }
+        for (int i = bridges.Count - 1; i >= 0; i--)
         {
-            if (bridge.IsFinished)
+            if (bridges[i].IsFinished)
             {
-                bridges.Remove(bridge);
+                bridges.RemoveAt(i);
             }
         }
     }

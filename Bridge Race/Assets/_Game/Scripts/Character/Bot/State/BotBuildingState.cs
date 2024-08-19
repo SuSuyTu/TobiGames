@@ -8,10 +8,12 @@ public class BotBuildingState : BotBaseState
     //protected Bridge currentBridge;
     public override void EnterState(BotStateManager state)
     {
-        state.BotCtrl.NavMeshAgent.ResetPath();
+        //state.BotCtrl.NavMeshAgent.ResetPath();
         if (SetTargetBridge(state))
         {
+            state.SetDestination(state.targetBridge.StartPoint.position);
             state.BotCtrl.Animator.SetBool("isBuilding", true);
+            BuildBridge(state);
         }
 
         else
@@ -38,44 +40,62 @@ public class BotBuildingState : BotBaseState
     }
     public override void UpdateState(BotStateManager state)
     {
-        if (state.targetBridge.IsFinished) state.SwitchState(state.botCollectingState);
-        //if (!state.IsReachDestination()) return;
+        if (state.targetBridge == null) return;
+        if (state.targetBridge.IsFinished)
+        {
+            state.BotCtrl.NavMeshAgent.ResetPath();
+            state.SwitchState(state.botCollectingState);
+        } 
+
+        //if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !
+        if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !state.targetBridge.IsFinished)
+        {
+            state.BotCtrl.NavMeshAgent.ResetPath();
+            state.SwitchState(state.botCollectingState);
+                //state.SwitchState(state.botIdlingState);
+        }
+        // if (state.targetBridge.IsFinished) state.SwitchState(state.botIdlingState);
+        // if (!state.IsReachDestination()) return;
         // if (state.IsReachDestination()) return;
-        BuildBridge(state);
+        //BuildBridge(state);
     }
 
     protected virtual bool SetTargetBridge(BotStateManager state)
     {
-        if (state.BotCtrl.BotGameSession.CurrentBridgeManager.GetRadomBridge() == null) return false;
+        Debug.Log("1");
+        if (state.BotCtrl.BotGameSession.CurrentBridgeManager.Bridges == null) return false;
+        Debug.Log("2");
         state.targetBridge = state.BotCtrl.BotGameSession.CurrentBridgeManager.GetRadomBridge();
-        state.SetDestination(state.targetBridge.StartPoint.position);
         if (state.targetBridge.IsFinished) return false;
+        Debug.Log("3");
         return true;
     }
 
     protected virtual void BuildBridge(BotStateManager state)
     {
-        for (int i = 0; i < state.targetBridge.Steps.Count; i++)
-        {
-            if (state.targetBridge.IsFinished) 
-            {
-                state.BotCtrl.NavMeshAgent.ResetPath();
-                state.SwitchState(state.botCollectingState);
-                return;
-            }
-            else 
-            {
-                if (!state.IsReachDestination()) return;
-                state.SetDestination(state.targetBridge.Steps[i].position);
-            }
-        
-            if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !state.targetBridge.IsFinished)
-            {
-                state.BotCtrl.NavMeshAgent.ResetPath();
-                state.SwitchState(state.botCollectingState);
-                return;
-            }
-        }
+        // for (int i = 0; i < state.targetBridge.Steps.Count; i++)
+        // {
+        //     if (i != state.targetBridge.Steps.Count - 1)
+        //     {
+        //         state.SetDestination(state.targetBridge.Steps[i].position);
+        //     }
+        //     else if (state.BotCtrl.BotBackpack.BotBrickStack.Count > 0 && i == state.targetBridge.Steps.Count - 1)
+        //     {
+        //         state.SetDestination(state.targetBridge.Steps[i].position);
+        //     }
+        //     else
+        //     {
+        //         state.BotCtrl.NavMeshAgent.ResetPath();
+        //         state.SwitchState(state.botCollectingState);
+        //     }
+        //     // if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !state.targetBridge.IsFinished && i != state.targetBridge.Steps.Count - 1)
+        //     // {
+        //     //     // if (!state.IsReachDestination()) return;
+        //     //     state.SwitchState(state.botCollectingState);
+        //     //     //state.SwitchState(state.botIdlingState);
+        //     // }
+        //     // state.SetDestination(state.targetBridge.Steps[i].position);
+        // } 
         state.SetDestination(state.targetBridge.NextStagePoint.position);
     }
 

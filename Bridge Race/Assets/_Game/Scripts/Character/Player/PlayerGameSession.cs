@@ -45,6 +45,7 @@ public class PlayerGameSession : NewMonoBehaviour
     public virtual GroundCtrl GetNextGround()
     {
         currentIndex++;
+        if (currentIndex >= PlayerCtrl.Instance.Ground.Grounds.Count) currentIndex--;
         return PlayerCtrl.Instance.Ground.Grounds[currentIndex];
     }
 }

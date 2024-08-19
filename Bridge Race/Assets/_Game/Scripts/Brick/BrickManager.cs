@@ -37,7 +37,8 @@ public class BrickManager : NewMonoBehaviour
         base.Awake();
         if (isStartOfTheStage)
         {
-            StartCoroutine(nameof(SpawnBrickGrid));
+            //StartCoroutine(nameof(SpawnBrickGrid));
+            SpawnBrickGrid();
         }
     }
 
@@ -50,10 +51,8 @@ public class BrickManager : NewMonoBehaviour
         if (isStartOfTheStage || unspawnedGrid.Count == 0 || pickedUpBrickColor.Count == 0 || groundCtrl.ColorManager.ColorSpawnList.Count == 0) return;
         StartCoroutine(nameof(RespawnBrick));
     }
-
-    public virtual IEnumerator SpawnBrickGrid()
+    public virtual void SpawnBrickGrid()
     {
-        yield return null;
         for(int i = 0; i < groundCtrl.ColorManager.ColorSpawnList.Count; i++)
         {
             for(int j = 0; j < brickPerCharacter; j++)
@@ -62,7 +61,7 @@ public class BrickManager : NewMonoBehaviour
                 if (!position.Equals(Vector2Int.zero))
                 {
                     Vector3 spawnPos = new Vector3(position.x, 
-                                                    groundHeight + 0.06934825f, 
+                                                    groundHeight, 
                                                     position.y);
                     BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[position];
                     brickSpawnPoint.isSpawned = true;
@@ -81,6 +80,36 @@ public class BrickManager : NewMonoBehaviour
         isStartOfTheStage = false;
     }
 
+    // public virtual IEnumerator SpawnBrickGrid()
+    // {
+    //     yield return null;
+    //     for(int i = 0; i < groundCtrl.ColorManager.ColorSpawnList.Count; i++)
+    //     {
+    //         for(int j = 0; j < brickPerCharacter; j++)
+    //         {
+    //             Vector2Int position = groundCtrl.GridManager.GetRandomSpawnPoint();
+    //             if (!position.Equals(Vector2Int.zero))
+    //             {
+    //                 Vector3 spawnPos = new Vector3(position.x, 
+    //                                                 groundHeight, 
+    //                                                 position.y);
+    //                 BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[position];
+    //                 brickSpawnPoint.isSpawned = true;
+    //                 brickSpawnPoint.color = groundCtrl.ColorManager.ColorSpawnList[i];
+
+    //                 Transform newBrick = BrickSpawner.Instance.Spawn(brickSpawnPoint.color.ToString(), spawnPos, Quaternion.Euler(0, 90, 0));
+    //                 newBrick.gameObject.SetActive(true);
+    //                 spawnedBricks.Add(newBrick);
+    //             }
+    //             else
+    //             {
+    //                 j--;
+    //             }
+    //         }
+    //     }
+    //     isStartOfTheStage = false;
+    // }
+
     public virtual IEnumerator SpawnBrickGridNewGround()
     {
         Color spawnColor = groundCtrl.ColorManager.SpawnNewGroundColor;
@@ -91,7 +120,7 @@ public class BrickManager : NewMonoBehaviour
                 if (!position.Equals(Vector2Int.zero))
                 {
                     Vector3 spawnPos = new Vector3(position.x, 
-                                                    groundHeight + 0.06934825f, 
+                                                    groundHeight, 
                                                     position.y);
                     BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[position];
                     brickSpawnPoint.isSpawned = true;
@@ -121,7 +150,7 @@ public class BrickManager : NewMonoBehaviour
         {
             Vector2Int nextSpawnPos = unspawnedGrid.Dequeue();
             Vector3 spawnPos = new Vector3(nextSpawnPos.x, 
-                                        groundHeight + 0.06934825f, 
+                                        groundHeight, 
                                         nextSpawnPos.y);
 
             BrickSpawnPoint brickSpawnPoint = groundCtrl.GridManager.Grid[nextSpawnPos];

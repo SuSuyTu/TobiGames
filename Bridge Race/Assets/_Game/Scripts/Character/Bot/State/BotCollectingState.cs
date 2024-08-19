@@ -20,8 +20,8 @@ public class BotCollectingState : BotBaseState
 
         // Debug.Log(state.BotCtrl.BotBackpack.BotBrickStack.Count);
         // Debug.Log(state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep());
-        if (state.BotCtrl.BotBackpack.BotBrickStack.Count >= 
-            state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep()) //- Random.Range(0, 5))
+        if (state.BotCtrl.BotBackpack.BotBrickStack.Count >= Random.Range(5, 6))
+            //state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep() && state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep() != 0) //- Random.Range(0, 5))
                 state.SwitchState(state.botBuildingState);
 
         // Check to change state

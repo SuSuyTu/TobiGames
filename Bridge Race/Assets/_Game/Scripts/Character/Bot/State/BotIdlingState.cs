@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BotIdlingState : BotBaseState
 {
+    public bool isIdlingIfinity;
     public override void EnterState(BotStateManager state)
     {
         state.BotCtrl.Animator.SetBool("isIdling", true);
@@ -15,6 +16,7 @@ public class BotIdlingState : BotBaseState
     }
     public override void UpdateState(BotStateManager state)
     {
+        if (isIdlingIfinity) return;
         if (state.botCollectingState.SetTargetForEnemy(state))
         // if (state.hasTargetBrick)
         {

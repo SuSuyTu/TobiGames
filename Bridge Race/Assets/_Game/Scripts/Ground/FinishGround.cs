@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishGround : GroundCtrl
+public class FinishGround : NewMonoBehaviour
 {
-    [SerializeField] public Color winnerColor;
-    protected override void LoadGridManager()
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if (this.gridManager == null) return;
-        base.LoadGridManager();
-    }
+        // Level Finished
 
-    protected override void LoadBrickManager()
-    {
-        if (this.brickManager == null) return;
-        base.LoadBrickManager();
-    }
+        if (other.tag.Contains("Player"))
+        {
+            // foreach (MeshRenderer mesh in railsMeshRenderers)
+            // {
+            //     mesh.material = other.GetComponent<PlayerController>().playerProperty.m_Material;
+            // }
+            // other.GetComponent<PlayerController>().MoveToFinishPos(finishPos);
+            Camera.main.GetComponent<CameraFollow>().LevelFinished(other.gameObject.transform);
 
-    protected override void LoadColorManager()
-    {
-        base.LoadColorManager();
-        winnerColor = this.colorManager.ColorSpawnList[0];
-        Debug.Log(winnerColor);
+            if (other.GetComponent<PlayerCtrl>() != null)
+            {
+                UIManager.Instance.OnLevelCompleted();
+            }
+            else
+            {
+                UIManager.Instance.OnLevelFailed();
+            }
+
+
+
+            // GameManager.Instance.EndLevel((other.CompareTag("Blue Player")) ? true : false);
+
+        }
     }
 }

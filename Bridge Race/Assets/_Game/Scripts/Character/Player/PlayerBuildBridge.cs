@@ -15,7 +15,7 @@ public class PlayerBuildBridge : NewMonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
         {
-            // Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Step"))
             {
                 MeshRenderer stepMeshRenderer = hit.transform.GetComponent<MeshRenderer>();

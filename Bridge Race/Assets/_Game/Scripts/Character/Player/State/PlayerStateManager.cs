@@ -7,6 +7,7 @@ public class PlayerStateManager : CharacterStateManager
     PlayerBaseState currentState;
     public PlayerIdlingState playerIdleState = new PlayerIdlingState();
     public PlayerRunningState playerRunningState = new PlayerRunningState();
+    public PlayerWinDancingState playerWinDancingState = new PlayerWinDancingState();
     protected override void Start()
     {
         currentState = playerIdleState;

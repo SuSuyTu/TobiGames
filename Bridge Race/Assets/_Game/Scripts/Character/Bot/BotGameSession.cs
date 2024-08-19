@@ -56,6 +56,10 @@ public class BotGameSession : NewMonoBehaviour
     public virtual GroundCtrl GetNextGround()
     {
         currentBotIndex++;
+        if (currentBotIndex == botCtrl.Ground.Grounds.Count)
+        {
+            currentBotIndex--;
+        }
         return botCtrl.Ground.Grounds[currentBotIndex];
     }
 

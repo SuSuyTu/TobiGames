@@ -13,6 +13,13 @@ public class PlayerIdlingState : PlayerBaseState
     {
         PlayerCtrl.Instance.Animator.SetBool("isIdling", false);
     }
+    public override void OnTriggerEnter(PlayerStateManager state, Collider other) 
+    {
+        if (other.CompareTag("Finish"))
+        {
+            state.SwitchState(state.playerWinDancingState);
+        }
+    }
 
     public override void UpdateState(PlayerStateManager state)
     {

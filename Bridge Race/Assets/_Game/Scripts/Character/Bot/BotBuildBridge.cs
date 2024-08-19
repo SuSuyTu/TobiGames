@@ -34,9 +34,6 @@ public class BotBuildBridge : NewMonoBehaviour
 
                         if (stepMeshRenderer.material.color != botCtrl.UnityColor)
                         {
-                            // Debug.Log(botCtrl.UnityColor);
-                            // Debug.Log(stepMeshRenderer.material.color);
-                            // Debug.Log(stepMeshRenderer.material.color == botCtrl.UnityColor);
                             stepMeshRenderer.material.color = botCtrl.UnityColor;
                             botCtrl.BotBackpack.RemoveStack();
                         }

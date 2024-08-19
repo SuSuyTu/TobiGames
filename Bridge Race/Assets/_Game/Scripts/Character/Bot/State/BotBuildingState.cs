@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class BotBuildingState : BotBaseState
 {
-    //protected Bridge currentBridge;
     public override void EnterState(BotStateManager state)
     {
-        //state.BotCtrl.NavMeshAgent.ResetPath();
         if (SetTargetBridge(state))
         {
             state.SetDestination(state.targetBridge.StartPoint.position);
@@ -47,17 +45,11 @@ public class BotBuildingState : BotBaseState
             state.SwitchState(state.botCollectingState);
         } 
 
-        //if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !
         if (state.BotCtrl.BotBackpack.BotBrickStack.Count == 0 && !state.targetBridge.IsFinished)
         {
             state.BotCtrl.NavMeshAgent.ResetPath();
             state.SwitchState(state.botCollectingState);
-                //state.SwitchState(state.botIdlingState);
         }
-        // if (state.targetBridge.IsFinished) state.SwitchState(state.botIdlingState);
-        // if (!state.IsReachDestination()) return;
-        // if (state.IsReachDestination()) return;
-        //BuildBridge(state);
     }
 
     protected virtual bool SetTargetBridge(BotStateManager state)

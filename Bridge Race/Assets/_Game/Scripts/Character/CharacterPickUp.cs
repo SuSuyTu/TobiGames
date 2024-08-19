@@ -7,13 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class CharacterPickUp : NewMonoBehaviour
 {
-    // [SerializeField] protected Rigidbody rigidBody;
     [SerializeField] protected BoxCollider boxCollider;
     protected override void Reset()
     {
         base.Reset();
         LoadCollider();
-        // LoadRigidBody();
     }
 
     protected virtual void LoadCollider()
@@ -24,15 +22,6 @@ public class CharacterPickUp : NewMonoBehaviour
         this.boxCollider.size = new Vector3(0.7320975f, 2.371392f, 0.7372546f);
         Debug.LogWarning(transform.name + ": LoadCollider", gameObject);
     }
-
-    // protected virtual void LoadRigidBody()
-    // {
-    //     if (this.rigidBody != null) return;
-    //     this.rigidBody = GetComponent<Rigidbody>();
-    //     this.rigidBody.useGravity = false;
-    //     this.rigidBody.isKinematic = true;
-    //     Debug.LogWarning(transform.name + ": LoadRigidBody", gameObject);
-    // }
 
     protected virtual void OnTriggerEnter(Collider other) 
     {

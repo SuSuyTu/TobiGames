@@ -18,7 +18,6 @@ public class BotIdlingState : BotBaseState
     {
         if (isIdlingIfinity) return;
         if (state.botCollectingState.SetTargetForEnemy(state))
-        // if (state.hasTargetBrick)
         {
             state.SwitchState(state.botCollectingState);
         }

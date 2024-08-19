@@ -39,7 +39,7 @@ public class Backpack : MonoBehaviour
 
         brick.transform.localRotation = Quaternion.Euler(0, 90, 0);
         brickStack.Push(brick.GetComponent<Brick>());
-        //Debug.Log(brickStack.Count);
+
     }
 
     public virtual void AddFallenStack(GameObject brick)
@@ -86,7 +86,6 @@ public class Backpack : MonoBehaviour
 
     public virtual void RemoveAllStack()
     {
-        //Debug.Log(brickStack.Count);
         int brickCount = brickStack.Count;
         //if (brickCount == 0) return;
 
@@ -101,7 +100,6 @@ public class Backpack : MonoBehaviour
 
             BrickFall(fallenBrick.transform);
         }
-        //Debug.Log(brickStack.Count);
     }
 
     public virtual void BrickFall(Transform brick)

@@ -7,7 +7,6 @@ public class BotStateManager : CharacterStateManager
     [SerializeField] protected BotCtrl botCtrl;
     public BotCtrl BotCtrl => botCtrl;
     BotBaseState currentState;
-    //public bool hasTarget = false;
     public Vector3 destination;
     public Bridge targetBridge;
     public BotIdlingState botIdlingState = new BotIdlingState();
@@ -31,7 +30,7 @@ public class BotStateManager : CharacterStateManager
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Hello");
+
         currentState.OnTriggerEnter(this, other);
     }
     

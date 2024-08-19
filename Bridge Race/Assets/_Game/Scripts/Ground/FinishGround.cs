@@ -6,15 +6,13 @@ public class FinishGround : NewMonoBehaviour
 {
     protected virtual void OnTriggerEnter(Collider other)
     {
-        // Level Finished
-
         if (other.tag.Contains("Player"))
         {
             // foreach (MeshRenderer mesh in railsMeshRenderers)
             // {
             //     mesh.material = other.GetComponent<PlayerController>().playerProperty.m_Material;
             // }
-            // other.GetComponent<PlayerController>().MoveToFinishPos(finishPos);
+            // other.GetComponent<PlayerCtrl>().MoveToFinishPos(finishPos);
             Camera.main.GetComponent<CameraFollow>().LevelFinished(other.gameObject.transform);
 
             if (other.GetComponent<PlayerCtrl>() != null)
@@ -25,10 +23,6 @@ public class FinishGround : NewMonoBehaviour
             {
                 UIManager.Instance.OnLevelFailed();
             }
-
-
-
-            // GameManager.Instance.EndLevel((other.CompareTag("Blue Player")) ? true : false);
 
         }
     }

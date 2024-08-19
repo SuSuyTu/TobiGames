@@ -42,7 +42,6 @@ public class UIManager : NewMonoBehaviour
 
     public  void OnClick_PauseButton()
     {
-        // StopAllCoroutines();
         Time.timeScale = 0f;
     }
     public virtual void OnClick_PlayButton()

@@ -20,13 +20,9 @@ public class BotCollectingState : BotBaseState
 
         // Debug.Log(state.BotCtrl.BotBackpack.BotBrickStack.Count);
         // Debug.Log(state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep());
-        if (state.BotCtrl.BotBackpack.BotBrickStack.Count >= Random.Range(5, 6))
+        if (state.BotCtrl.BotBackpack.BotBrickStack.Count >= Random.Range(12, 15))
             //state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep() && state.BotCtrl.BotGameSession.CurrentBridgeManager.GetNumOfStep() != 0) //- Random.Range(0, 5))
                 state.SwitchState(state.botBuildingState);
-
-        // Check to change state
-        // if (t.Bricks.Count < t.maxBrickCanHold) t.ChangeState(t.FindBrickState);
-        // else t.ChangeState(t.GoStairState);
     }
     public override void OnTriggerEnter(BotStateManager state, Collider other)
     {

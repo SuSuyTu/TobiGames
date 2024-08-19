@@ -7,7 +7,6 @@ public class BotEnterNextGroundState : BotBaseState
 {
     public override void EnterState(BotStateManager state)
     {
-        //Debug.Log("Hello");
         state.targetBridge = null;
         state.BotCtrl.NavMeshAgent.ResetPath();
         EnterNextGround(state);

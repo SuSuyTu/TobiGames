@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb0a8f7bfb09b143adeb7c8c0001e5c, type: 3}
+  m_Name: FullSetDataDevil
+  m_EditorClassIdentifier: 
+  index: 0
+  price: 600
+  setType: 1
+  Skin: {fileID: 2100000, guid: 793e02f3b2fb9064aa4dd527bc3f85a4, type: 2}
+  Hat: {fileID: 4216152529104310466, guid: cdb10b95c642a9641b563cd86f4d35f6, type: 3}
+  LeftHand: {fileID: 0}
+  Tail: {fileID: 564410207475777862, guid: cbb38748df207a14397fb1089a3cc276, type: 3}
+  Back: {fileID: 2625381376235518992, guid: 25a31b8235803774f819388809a37660, type: 3}

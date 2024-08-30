@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UISkinShop : UIBase
 {
@@ -160,6 +161,11 @@ public class UISkinShop : UIBase
                     break;
             }
         }
+    }
+
+    public virtual void GetHatButton(Button button)
+    {
+        button.transform.GetChild(0).gameObject.SetActive(false);
     }
 
 
@@ -426,4 +432,5 @@ public class UISkinShop : UIBase
                 break;
         }
     }
+
 }

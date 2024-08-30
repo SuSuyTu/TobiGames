@@ -28,13 +28,7 @@ public abstract class CharacterAttackRange : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         
-        // foreach (CharacterCtrl characterCtrl in enemiesInRange)
-        // {
-        //     if (characterCtrl.isDead)
-        //     {
-        //         enemiesInRange.Remove(characterCtrl);
-        //     }
-        // }
+
         for (int i = enemiesInRange.Count - 1; i >= 0; i--)
         {
             if (enemiesInRange[i].isDead)

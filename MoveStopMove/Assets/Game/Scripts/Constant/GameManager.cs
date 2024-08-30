@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
         while (spawnedBots < maxNumOfBotsInScene)
         {
+            //Debug.Log(spawnedBots);
             SpawnBot();
             spawnedBots++;
 
@@ -79,9 +80,12 @@ public class GameManager : MonoBehaviour
     protected virtual void SpawnBot()
     {
         Transform newEnemy = BotSpawner.Instance.SpawnRandomPos("Bot", Quaternion.identity);
+        //Debug.Log(1);
 
         BotCtrl currentBot = Cache<BotCtrl>.GetComponent(newEnemy.GetComponent<BoxCollider>());
 
+        currentBot.isDead = false;
+        currentBot.IsAttackable = true;
         currentBot.SetUpIndicator();
         currentBot.GetRandomName();
         currentBot.CharacterAttackRange.EnemiesInRange.Clear();
@@ -90,8 +94,7 @@ public class GameManager : MonoBehaviour
     
         newEnemy.gameObject.SetActive(true);
         //currentBot.LoadCurrentWeapon();
-        currentBot.isDead = false;
-        currentBot.IsAttackable = true;
+        //Debug.Log(2);
     }
 
     protected virtual void DespawnIndicator()
@@ -127,12 +130,11 @@ public class GameManager : MonoBehaviour
                 //UIManager.Instance.FloatingJoystick.HandleRange = 0;
                 PlayerSpawner.Instance.Prefabs[0].gameObject.SetActive(true);
                 PlayerCtrl.Instance.PlayerStateManager.OnRespawn();
-
+                CameraManager.Instance.SetSkinShopCamera();
+                
                 UIManager.Instance.OpenMainMenuCanvas();
                 SoundManager.Instance.PlayOnMainMenu();
                 CharacterData.Instance.SetData();
-
-                CameraManager.Instance.SetSkinShopCamera();
 
                 break;
             
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Gameplay:
+            
                 PlayerCtrl.Instance.IsAttackable = true;
                 PlayerCtrl.Instance.isDead = false;
                 PlayerCtrl.Instance.SetUpIndicator();

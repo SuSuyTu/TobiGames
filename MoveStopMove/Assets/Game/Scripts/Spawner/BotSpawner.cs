@@ -4,8 +4,6 @@ using UnityEngine.AI;
 
 public class BotSpawner : Spawner
 {
-    [SerializeField] protected int limitX;
-    [SerializeField] protected int limitZ;
     private static BotSpawner instance;
     public static BotSpawner Instance { get => instance; }
     protected virtual void Awake()

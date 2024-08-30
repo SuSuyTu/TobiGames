@@ -70,7 +70,7 @@ public class UIWeaponShop : UIBase
 
     protected virtual void SetWeaponDescription(int currentWeaponIndex)
     {
-        weaponDescription.text = "+" + weaponDatas[currentWeaponIndex].attackSpeed + " Speed, +" + weaponDatas[currentWeaponIndex].range + " Range";
+        weaponDescription.text = weaponDatas[currentWeaponIndex].attackSpeed + " Speed, " + weaponDatas[currentWeaponIndex].range + " Range";
     }
 
     protected virtual void ShowWeaponOnUI(int currentWeaponIndex)

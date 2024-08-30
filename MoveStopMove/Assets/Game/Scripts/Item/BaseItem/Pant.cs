@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkinSet : MonoBehaviour
+public class Pant : MonoBehaviour
 {
 
 }

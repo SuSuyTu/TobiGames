@@ -71,19 +71,27 @@ public abstract class CharacterSkin : MonoBehaviour
 
     public virtual void ChangeHat(string hatType)
     {
-        if (hatType.Equals("None")) return;
+        if (hatType == null) return;
         DespawnHat();
         currentHat = SkinSpawner.Instance.SpawnInParent(hatType, head);
-        currentHat.gameObject.SetActive(true);
+        if (currentHat != null)
+        {
+            currentHat.gameObject.SetActive(true);
+        }
+        
 
     }
 
     public virtual void ChangeAccessory(string accessoryType)
     {
-        if (accessoryType.Equals("None")) return;
+        if (accessoryType == null) return;
         DespawnAccessory();
         currentAccessory = SkinSpawner.Instance.SpawnInParent(accessoryType, leftHand);
-        currentAccessory.gameObject.SetActive(true);
+        if (currentAccessory != null)
+        {
+            currentAccessory.gameObject.SetActive(true);
+        }
+        
     }
 
     public virtual void ChangeWeapon(string weaponType)

@@ -86,7 +86,6 @@ public abstract class WeaponBullet : MonoBehaviour
 
     protected virtual void OnDespawn()
     {
-        // Testing
         transform.localScale = Vector3.one;
 
 

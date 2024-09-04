@@ -17,11 +17,12 @@ public class CharacterData : MonoBehaviour
     public virtual void SetData()
     {
         PlayerCtrl.Instance.characterName = PlayerPrefs.GetString(Constants.PlayerPrefsKey.PlayerName.ToString());
+        Debug.Log(GetPlayerEquipedHat());
         PlayerCtrl.Instance.CharacterSkin.ChangeWeapon(GetPlayerEquipedWeapon());
         PlayerCtrl.Instance.CharacterSkin.ChangeHat(GetPlayerEquipedHat());
         PlayerCtrl.Instance.CharacterSkin.ChangeAccessory(GetPlayerEquipedAccessory());
         PlayerCtrl.Instance.CharacterSkin.ChangePants(PlayerCtrl.Instance.CharacterSkin.GetPantsTypeFromString(GetPlayerEquipedPant()));
-        PlayerCtrl.Instance.CharacterSkin.ChangeFullSet(GetPlayerEquipedFullSet());
+        //PlayerCtrl.Instance.CharacterSkin.ChangeFullSet(GetPlayerEquipedFullSet());
     }
 
 

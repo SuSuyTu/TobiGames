@@ -21,10 +21,10 @@ public class PlayerIdlingState : IPlayerState
             state.SwitchState(state.playerAttackingState);
         }
 
-        // if (GameManager.Instance.IsState(GameState.Gameplay) == false)
-        // {
-        //     return;
-        // }
+        if (GameManager.Instance.IsState(GameState.Gameplay) == false)
+        {
+            return;
+        }
 
         // if (player.IsMoving)
         // {

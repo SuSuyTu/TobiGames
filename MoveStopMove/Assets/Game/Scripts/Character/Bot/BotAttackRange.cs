@@ -28,7 +28,7 @@ public class BotAttackRange : CharacterAttackRange
 
     public override void Attack(Vector3 targetPos)
     {
-        botCtrl.LoadCurrentWeapon();
+        //botCtrl.LoadCurrentWeapon();
         Transform newBullet = botCtrl.CurrentWeapon.SpawnBullet(targetPos, botCtrl);
         newBullet.gameObject.SetActive(true);
         StartCoroutine(ResetAttack());

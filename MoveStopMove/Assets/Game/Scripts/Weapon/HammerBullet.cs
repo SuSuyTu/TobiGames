@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WeaponBulletRotate : WeaponBullet
+public class HammerBullet : WeaponBullet
 {
     public override void Move()
     {

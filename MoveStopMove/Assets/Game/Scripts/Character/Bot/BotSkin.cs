@@ -9,10 +9,10 @@ public class BotSkin : CharacterSkin
     private List<Material> assignedSkin;
     public override void ChangeSkin()
     {
-        string wepName = GetRandomWeapon().ToString();
+        //string wepName = GetRandomWeapon().ToString();
         //Debug.Log(wepName);
         //ChangeWeapon(wepName);
-        ChangeWeapon(Constants.WeaponType.Bommerang.ToString());
+        ChangeWeapon(GetRandomWeapon());
 
         botCtrl.LoadCurrentWeapon();
 

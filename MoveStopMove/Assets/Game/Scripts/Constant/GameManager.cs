@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         currentBot.isDead = false;
         currentBot.IsAttackable = true;
-        currentBot.SetUpIndicator();
+        //currentBot.SetUpIndicator();
         currentBot.GetRandomName();
         currentBot.CharacterAttackRange.EnemiesInRange.Clear();
         BotSkin botSkin = currentBot.CharacterSkin as BotSkin;
@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
     
         newEnemy.gameObject.SetActive(true);
         //currentBot.LoadCurrentWeapon();
-        //Debug.Log(2);
     }
 
     protected virtual void DespawnIndicator()
@@ -130,7 +129,7 @@ public class GameManager : MonoBehaviour
                 //UIManager.Instance.FloatingJoystick.HandleRange = 0;
                 PlayerSpawner.Instance.Prefabs[0].gameObject.SetActive(true);
                 PlayerCtrl.Instance.PlayerStateManager.OnRespawn();
-                CameraManager.Instance.SetSkinShopCamera();
+                //CameraManager.Instance.SetSkinShopCamera();
                 
                 UIManager.Instance.OpenMainMenuCanvas();
                 SoundManager.Instance.PlayOnMainMenu();
@@ -154,7 +153,7 @@ public class GameManager : MonoBehaviour
                 PlayerCtrl.Instance.PlayerAttackRange.TuneRangeBaseOnWeapon();
 
 
-            
+                StopAllCoroutines();
                 StartCoroutine(SpawnBots());
 
                 break;
@@ -164,6 +163,7 @@ public class GameManager : MonoBehaviour
                 DespawnIndicator();
                 DespawnBot();
 
+                CameraManager.Instance.SetSkinShopCamera();
                 UIManager.Instance.SetRankText((botCount + 1).ToString());
                 SoundManager.Instance.PLayWhenLose();
                 UIManager.Instance.OpenLoseCanvas();
@@ -175,6 +175,7 @@ public class GameManager : MonoBehaviour
                 DespawnIndicator();
                 DespawnBot();
 
+                CameraManager.Instance.SetSkinShopCamera();
                 UIManager.Instance.FloatingJoystick.gameObject.SetActive(false);
                 SoundManager.Instance.PlayWhenWin();
                 UIManager.Instance.OpenVictoryCanvas();

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         currentBot.isDead = false;
         currentBot.IsAttackable = true;
-        //currentBot.SetUpIndicator();
+        currentBot.SetUpIndicator();
         currentBot.GetRandomName();
         currentBot.CharacterAttackRange.EnemiesInRange.Clear();
         BotSkin botSkin = currentBot.CharacterSkin as BotSkin;

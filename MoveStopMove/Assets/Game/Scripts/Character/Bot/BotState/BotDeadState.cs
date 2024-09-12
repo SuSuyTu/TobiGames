@@ -34,7 +34,7 @@ public class BotDeadState : IBotState
             state.BotCtrl.transform.position = Vector3.zero;
             // state.BotCtrl.NavMeshAgent.enabled = true;
             GameManager.Instance.botCount -= 1;
-            //IndicatorSpawner.Instance.Despawn(state.BotCtrl.botIndicator.transform.parent);
+            IndicatorSpawner.Instance.Despawn(state.BotCtrl.botIndicator.transform.parent);
             BotSpawner.Instance.Despawn(state.BotCtrl.transform);
             
         }

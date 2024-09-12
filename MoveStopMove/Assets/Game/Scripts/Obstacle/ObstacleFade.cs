@@ -16,7 +16,7 @@ public class ObstacleFade : MonoBehaviour
         fadeColor = material.color;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isFade)
         {

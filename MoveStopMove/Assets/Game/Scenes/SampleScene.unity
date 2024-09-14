@@ -2130,7 +2130,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -2311,6 +2311,10 @@ PrefabInstance:
     - target: {fileID: 1658431354680333329, guid: fb032a95dcbb72b4bb656a19c7ca6f22, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658431354680333330, guid: fb032a95dcbb72b4bb656a19c7ca6f22, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1658431354680333333, guid: fb032a95dcbb72b4bb656a19c7ca6f22, type: 3}
       propertyPath: m_RenderMode
@@ -39305,7 +39309,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9093048451607881167}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c191a902c67de0b43a7a96fa8f0c533c, type: 3}
   m_Name: 
@@ -50417,7 +50421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87b4a5817577d54fa5c9451215f893b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputField: {fileID: 7145711509919727258}
+  InputField: {fileID: 459578286}
   InputFieldSlide: {fileID: 9093048451602323359}
   SliderEnabled: 1
   SubmitOnEnter: 1
@@ -52962,7 +52966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &9093048451607862746
 MonoBehaviour:
   m_ObjectHideFlags: 0

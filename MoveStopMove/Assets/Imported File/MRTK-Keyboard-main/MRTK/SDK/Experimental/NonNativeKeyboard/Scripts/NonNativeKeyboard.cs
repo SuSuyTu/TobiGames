@@ -404,7 +404,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// </summary>
         public void PresentKeyboard()
         {
-            ResetClosingTime();
+            //ResetClosingTime();
             gameObject.SetActive(true);
             ActivateSpecificKeyboard(LayoutType.Alpha);
 

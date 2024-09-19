@@ -9,6 +9,7 @@ public class WeaponData : ScriptableObject
 
     public int price;
     public float range;
+    public float sphereRadius;
     public float moveSpeed;
     public float attackSpeed;
 }

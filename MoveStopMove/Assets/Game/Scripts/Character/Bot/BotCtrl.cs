@@ -13,6 +13,8 @@ public class BotCtrl : CharacterCtrl
     public GameObject BotCircleTargeted => botCircleTargeted;
     [SerializeField] protected BotStateManager botStateManager;
     public BotStateManager BotStateManager => botStateManager;
+    [SerializeField] protected BotSpawner botSpawner;
+    public BotSpawner BotSpawner => botSpawner;
     // [SerializeField] protected Transform botIndicatorPoint;
     // public Transform BotIndicatorPoint => botIndicatorPoint;
     public BotIndicator botIndicator;

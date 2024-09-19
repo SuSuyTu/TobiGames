@@ -61,9 +61,10 @@ public abstract class WeaponBullet : MonoBehaviour
                     UIManager.Instance.SetMurderName(owner.characterName);
 
                 }
-                else if (character is BotCtrl botCtrl)
+                else if (character is BotCtrl botCtrl && !character.isDead)
                 {
-                    owner.Size += 0.1f;
+                    //owner.Size += 0.1f;
+                    owner.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
                     owner.CharacterSizeUp();
                     PlayerCtrl.Instance.point += (int) Constants.Gold.POINT;
                     

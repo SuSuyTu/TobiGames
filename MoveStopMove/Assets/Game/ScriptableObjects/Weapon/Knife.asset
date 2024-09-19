@@ -15,7 +15,8 @@ MonoBehaviour:
   index: 0
   name: Knife
   icon: {fileID: 21300000, guid: 33c349a86a058c34196d38bf8d1d2ca9, type: 3}
-  price: 250
+  price: 0
   range: 8
+  sphereRadius: 3.6
   moveSpeed: 2
   attackSpeed: 0.7

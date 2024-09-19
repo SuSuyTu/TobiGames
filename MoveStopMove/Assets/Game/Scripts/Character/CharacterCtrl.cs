@@ -50,10 +50,14 @@ public class CharacterCtrl : MonoBehaviour
         set => isAttacking = value;
     }
 
-    public float Size
+    private void OnDisable() 
     {
-        get => size;
-        set => size = value;
+        this.isDead = true;
+    }
+
+    private void OnEnable() 
+    {
+        this.isDead = false;
     }
 
     protected virtual void Awake()
@@ -118,7 +122,7 @@ public class CharacterCtrl : MonoBehaviour
 
     public virtual void CharacterSizeUp()
     {
-        TF.localScale = new Vector3(size, size, size);
+        //TF.localScale = new Vector3(size, size, size);
     }
 
     protected virtual void LoadAttackPosition()

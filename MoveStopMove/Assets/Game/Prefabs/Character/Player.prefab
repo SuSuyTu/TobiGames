@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4133962623472749275
 Transform:
   m_ObjectHideFlags: 0
@@ -961,6 +961,7 @@ Transform:
   - {fileID: 1863386408057822117}
   - {fileID: 2402276088563061320}
   - {fileID: 8928989395054749243}
+  - {fileID: 7031020243681312167}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5584638833555085720
@@ -1035,6 +1036,7 @@ MonoBehaviour:
   isDead: 0
   TF: {fileID: 4133962623472749275}
   characterSkin: {fileID: 1815953231094892713}
+  characterNamePosition: {fileID: 5905265406600293639}
   characterName: 
   floatingJoystick: {fileID: 0}
   playerMovement: {fileID: 3944896397109869872}
@@ -1797,6 +1799,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6323449225264410266}
   m_LocalEulerAnglesHint: {x: -0.15, y: -96.475, z: 8.245}
+--- !u!1 &5905265406600293639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7031020243681312167}
+  m_Layer: 0
+  m_Name: PlayerName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7031020243681312167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905265406600293639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4133962623472749275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6110597690730393533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2573,7 @@ MonoBehaviour:
   attackRangeRadius: 1
   enemiesInRange: []
   circle: {fileID: 1322647825703162986}
+  sphereCollider: {fileID: 1071440577106540370}
 --- !u!1 &7786965212592297370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +2821,7 @@ Transform:
   m_GameObject: {fileID: 8446203372914240133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.6}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2871,7 +2905,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 11, y: 11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (!PlayerCtrl.Instance.isDead && !PlayerCtrl.Instance.IsAttacking)
+        if (!PlayerCtrl.Instance.isDead && !PlayerCtrl.Instance.IsAttacking && !GameManager.Instance.IsState(GameState.MainMenu))
         {
             Vector3 movement = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
             PlayerCtrl.Instance.Rigidbody.velocity = movement;

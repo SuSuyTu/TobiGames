@@ -15,7 +15,8 @@ public class Weapon : MonoBehaviour
         //Collider other = newBullet.GetComponent<BoxCollider>();
         WeaponBullet newWeaponBullet = Cache<WeaponBullet>.GetComponent(newBullet.GetComponent<BoxCollider>());
 
-        newWeaponBullet.OnInit(owner, target, owner.Size);
+        //newWeaponBullet.OnInit(owner, target, owner.Size);
+        newWeaponBullet.OnInit(owner, target, owner.transform.localScale.x);
         return newBullet;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BotAttackingState : IBotState
@@ -27,10 +28,12 @@ public class BotAttackingState : IBotState
  
         if (timer >= attackSpeed && state.BotCtrl.IsAttackable)
         {
+            Debug.Log("1");
             state.BotCtrl.CharacterAttackRange.Attack(targetPos);
         }
         else if (timer >= attackTime)
         {
+            Debug.Log("2");
             state.SwitchState(state.botIdlingState);
         }
     }

@@ -125,7 +125,7 @@ public class Spawner : MonoBehaviour
         {
             if (poolObj == null) continue;
 
-            if (poolObj.name == prefab.name)  
+            if (poolObj.name == prefab.name && !poolObj.gameObject.activeInHierarchy)  
             {
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
@@ -143,7 +143,7 @@ public class Spawner : MonoBehaviour
         {
             if (poolObj == null) continue;
 
-            if (poolObj.name == prefab.name)  
+            if (poolObj.name == prefab.name && !poolObj.gameObject.activeInHierarchy)  
             {
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
@@ -161,7 +161,7 @@ public class Spawner : MonoBehaviour
         {
             if (poolObj == null) continue;
 
-            if (poolObj.name == prefab.name)  
+            if (poolObj.name == prefab.name && !poolObj.gameObject.activeInHierarchy)  
             {
                 this.poolObjs.Remove(poolObj);
                 return poolObj;

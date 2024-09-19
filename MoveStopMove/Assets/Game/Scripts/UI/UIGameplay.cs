@@ -58,4 +58,14 @@ public class UIGameplay : UIBase
     {
         tutorial.SetActive(false);
     }
+
+    public virtual void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public virtual void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
 }

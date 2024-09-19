@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("Bot Spawn Manager")]
     [SerializeField] protected int maxNumOfBotsInPlayMode;
     public int MaxNumOfBotsInPlayMode => maxNumOfBotsInPlayMode;
-    [SerializeField] protected int maxNumOfBotsInScene;
-    [SerializeField] protected float delaySpawnTime = 2f;
+    //[SerializeField] protected int maxNumOfBotsInScene;
+    [SerializeField] protected float delaySpawnTime = Constants.SpawnAndDespawnTime.Bot_Spawn_Time;
     [SerializeField] protected Transform holderOfBotIndicator;
     [SerializeField] protected Transform botHolder;
     protected BotCtrl currentBot;
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         int spawnedBots = 0;
 
-        while (spawnedBots < maxNumOfBotsInScene)
+        while (spawnedBots < maxNumOfBotsInPlayMode)
         {
             //Debug.Log(spawnedBots);
             SpawnBot();
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
         BotCtrl currentBot = Cache<BotCtrl>.GetComponent(newEnemy.GetComponent<BoxCollider>());
 
         currentBot.isDead = false;
+        currentBot.IsAttacking = false;
         currentBot.IsAttackable = true;
         currentBot.SetUpIndicator();
         currentBot.GetRandomName();
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform bot in botHolder)
         {
+            bot.localScale = Vector3.one;
             BotSpawner.Instance.Despawn(bot);
             //Destroy(transform.gameObject);
         }
@@ -127,17 +129,27 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 //UIManager.Instance.FloatingJoystick.HandleRange = 0;
+                StopAllCoroutines();
+                DespawnIndicator();
+                DespawnBot();
+
+                CameraManager.Instance.SetSkinShopCamera();
                 PlayerSpawner.Instance.Prefabs[0].gameObject.SetActive(true);
                 PlayerCtrl.Instance.PlayerStateManager.OnRespawn();
-                //CameraManager.Instance.SetSkinShopCamera();
                 
                 UIManager.Instance.OpenMainMenuCanvas();
                 SoundManager.Instance.PlayOnMainMenu();
                 CharacterData.Instance.SetData();
 
+                botCount = maxNumOfBotsInPlayMode;
+
                 break;
             
             case GameState.Tutorial:
+                StopAllCoroutines();
+                DespawnIndicator();
+                DespawnBot();
+
                 PlayerCtrl.Instance.Animator.SetBool(Constants.AnimType.DANCE, false);
                 SoundManager.Instance.PlayOnStart();
                 CameraManager.Instance.SetGamePlayCamera();
@@ -145,7 +157,8 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Gameplay:
-            
+                            
+
                 PlayerCtrl.Instance.IsAttackable = true;
                 PlayerCtrl.Instance.isDead = false;
                 PlayerCtrl.Instance.SetUpIndicator();
@@ -163,10 +176,11 @@ public class GameManager : MonoBehaviour
                 DespawnIndicator();
                 DespawnBot();
 
-                CameraManager.Instance.SetSkinShopCamera();
+                CameraManager.Instance.SetResultCamera();
                 UIManager.Instance.SetRankText((botCount + 1).ToString());
                 SoundManager.Instance.PLayWhenLose();
                 UIManager.Instance.OpenLoseCanvas();
+
 
                 break;
 
@@ -175,11 +189,12 @@ public class GameManager : MonoBehaviour
                 DespawnIndicator();
                 DespawnBot();
 
-                CameraManager.Instance.SetSkinShopCamera();
+                CameraManager.Instance.SetResultCamera();
                 UIManager.Instance.FloatingJoystick.gameObject.SetActive(false);
                 SoundManager.Instance.PlayWhenWin();
                 UIManager.Instance.OpenVictoryCanvas();
 
+    
                 break;
         }
     }

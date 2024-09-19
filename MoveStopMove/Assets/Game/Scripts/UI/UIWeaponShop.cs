@@ -27,11 +27,13 @@ public class UIWeaponShop : UIBase
     public virtual void OnEnable()
     {
         playerGold.text = CharacterData.Instance.GetPlayerGold().ToString();
+        currentWeaponIndex = 0;
     }
 
     public virtual void OnDisable() 
     {
         CharacterData.Instance.SetData();
+        
     }
 
     public virtual void ChangeWeaponUI(int index)
@@ -73,7 +75,7 @@ public class UIWeaponShop : UIBase
         weaponDescription.text = weaponDatas[currentWeaponIndex].attackSpeed + " Speed, " + weaponDatas[currentWeaponIndex].range + " Range";
     }
 
-    protected virtual void ShowWeaponOnUI(int currentWeaponIndex)
+    public virtual void ShowWeaponOnUI(int currentWeaponIndex)
     {
         if (weaponImage != null)
         {

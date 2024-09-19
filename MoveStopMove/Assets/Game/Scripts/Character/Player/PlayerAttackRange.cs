@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerAttackRange : CharacterAttackRange
 {
     public SpriteRenderer circle;
+    [SerializeField] protected SphereCollider sphereCollider;
     public virtual void TuneRangeBaseOnWeapon()
     {
         float size = PlayerCtrl.Instance.CurrentWeapon.weaponData.range;
         circle.size = new Vector2(size, size);
+        sphereCollider.radius = PlayerCtrl.Instance.CurrentWeapon.weaponData.sphereRadius;
     }
 
     protected override void CharacterEnterRange(Collider other)

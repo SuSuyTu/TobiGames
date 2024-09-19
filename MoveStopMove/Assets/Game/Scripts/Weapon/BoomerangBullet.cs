@@ -24,8 +24,9 @@ public class BoomerangBullet : WeaponBullet
 
     private void RotateBack()
     {
+        Vector3 temp = targetPoint;
         targetPoint = startPoint;
-        startPoint = this.transform.position;
+        startPoint = temp;
         
 
         //Debug.Log(maxFlyDistance);

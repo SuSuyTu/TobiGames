@@ -111,7 +111,7 @@ public abstract class CharacterSkin : MonoBehaviour
     }
     public virtual Constants.PantsType GetPantsTypeFromString(string pantName)
     {
-        if (Enum.TryParse(pantName, true, out Constants.PantsType pantsType))
+        if (Enum.TryParse(pantName, true, out Constants.PantsType pantsType) && !pantName.Equals("Default"))
         {
             return pantsType;
         }

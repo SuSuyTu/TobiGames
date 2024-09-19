@@ -17,5 +17,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 2dbdf917bda18854c9feb89adc0a75f7, type: 3}
   price: 100
   range: 9.5
+  sphereRadius: 4.3
   moveSpeed: 0.001
   attackSpeed: 1

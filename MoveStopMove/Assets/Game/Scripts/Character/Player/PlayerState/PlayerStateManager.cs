@@ -43,8 +43,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public virtual void OnDespawn()
     {
-        transform.parent.position =  Vector3.zero;
+        // transform.parent.position =  Vector3.zero;
         PlayerCtrl.Instance.PlayerAttackRange.EnemiesInRange.Clear();
-        PlayerSpawner.Instance.Prefabs[0].gameObject.SetActive(false);
+        //PlayerSpawner.Instance.Prefabs[0].gameObject.SetActive(false);
     }
 }

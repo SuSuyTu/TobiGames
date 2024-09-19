@@ -21,7 +21,7 @@ public class BotIndicator : MonoBehaviour
     // [SerializeField] private Image arrowColor;
 
     // private Vector3 screenCentre;
-    private Vector3 offset = new Vector3(-0.8f, 3, 0);
+    private Vector3 offset = new Vector3(-1.5f, 1.5f, 0);
 
     private Camera mainCamera;
 
@@ -55,7 +55,8 @@ public class BotIndicator : MonoBehaviour
         // bool isTargetVisible = IsTargetVisible(screenPosition);
         enemyName.SetText(target.characterName);
 
-        canvasBotIndicator.transform.position = targetTf.position + offset;
+        canvasBotIndicator.transform.position = targetTf.position + offset + new Vector3(0, target.transform.localScale.x * 2f, 0);
+        
         
         
         //transform.parent.position = CharacterPos;

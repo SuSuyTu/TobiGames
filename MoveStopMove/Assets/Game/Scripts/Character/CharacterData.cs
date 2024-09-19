@@ -16,8 +16,7 @@ public class CharacterData : MonoBehaviour
 
     public virtual void SetData()
     {
-        PlayerCtrl.Instance.characterName = PlayerPrefs.GetString(Constants.PlayerPrefsKey.PlayerName.ToString());
-        Debug.Log(GetPlayerEquipedHat());
+        PlayerCtrl.Instance.characterName = PlayerPrefs.GetString(Constants.PlayerPrefsKey.PlayerName.ToString(), "Player");
         PlayerCtrl.Instance.CharacterSkin.ChangeWeapon(GetPlayerEquipedWeapon());
         PlayerCtrl.Instance.CharacterSkin.ChangeHat(GetPlayerEquipedHat());
         PlayerCtrl.Instance.CharacterSkin.ChangeAccessory(GetPlayerEquipedAccessory());
@@ -157,7 +156,7 @@ public class CharacterData : MonoBehaviour
 
     public virtual string GetPlayerEquipedWeapon()
     {
-        return PlayerPrefs.GetString(Constants.PlayerPrefsKey.Weapon.ToString());
+        return PlayerPrefs.GetString(Constants.PlayerPrefsKey.Weapon.ToString(), Constants.WeaponType.Knife.ToString());
     }
 
     public virtual void SaveBuyWeapon(Constants.WeaponType weaponType)

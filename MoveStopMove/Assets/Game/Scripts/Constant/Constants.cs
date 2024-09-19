@@ -18,7 +18,7 @@ public class Constants : MonoBehaviour
 
     public class CharacterAttack
     {
-        public const float ATTACK_TIME = 1f;
+        public const float ATTACK_TIME = 0.7f;
         public const float ATTACK_SPEED = 0.25f;
         public const float DEFAULT_SPHERE_RADIUS = 5f;
         public const float MIN_SIZE = 1f;
@@ -179,5 +179,10 @@ public class Constants : MonoBehaviour
     {
         DEFAULT_GAMEPLAY_CAMERA_FOV = 35,
         FOV_PER_SIZE = 5,
+    }
+    public class SpawnAndDespawnTime
+    {
+        public const float Bot_Despawn_Time = 1.5f;
+        public const float Bot_Spawn_Time = 2f;
     }
 }

@@ -10,6 +10,7 @@ public class BotIdlingState : IBotState
     public void OnEnter(BotStateManager state)
     {
         state.BotCtrl.Animator.SetBool(Constants.AnimType.IDLE, true);
+        state.BotCtrl.NavMeshAgent.ResetPath();
         //chanceAttack = Random.Range((int) Constants.StateTimerAndRate.attackMinChance, (int) Constants.StateTimerAndRate.attackMaxChance);
         idleTime = Random.Range((int) Constants.StateTimerAndRate.minIdleTime,(int) Constants.StateTimerAndRate.maxIdleTime);
         //state.BotCtrl.StopMove();

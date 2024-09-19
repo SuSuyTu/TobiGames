@@ -13,8 +13,7 @@ public class BotSkin : CharacterSkin
         //Debug.Log(wepName);
         //ChangeWeapon(wepName);
         ChangeWeapon(GetRandomWeapon());
-
-        botCtrl.LoadCurrentWeapon();
+        //ChangeWeapon(Constants.WeaponType.Knife.ToString());
 
         //(GetRandomWeapon().ToString());
         //ChangeWeapon(Utilities.RandomEnumValue<WeaponType>());
@@ -28,7 +27,10 @@ public class BotSkin : CharacterSkin
     {
         Constants.WeaponType[] weaponTypes = (Constants.WeaponType[])System.Enum.GetValues(typeof(Constants.WeaponType));
 
-        int randomIndex = Random.Range(0, weaponTypes.Length - 1); 
+        int randomIndex = Random.Range(0, weaponTypes.Length); 
+
+        Debug.Log(weaponTypes[randomIndex].ToString());
+
 
         return weaponTypes[randomIndex].ToString();
     }

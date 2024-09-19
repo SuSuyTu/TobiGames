@@ -34,7 +34,7 @@ public class PlayerCtrl : CharacterCtrl
     {
         TF.localScale = Vector3.one;
         tempSize = 1.4f;
-        size = 1;
+        //size = 1;
         CameraManager.Instance.ResetGameplayCameraFOV();
         // TF.localScale = Vector3.one;
         // tempSize = 1.4f;

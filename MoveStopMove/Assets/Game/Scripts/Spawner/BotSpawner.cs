@@ -23,10 +23,10 @@ public class BotSpawner : Spawner
         if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
         {
             //Debug.Log(hit.position);
-            return hit.position;
+            return new Vector3(hit.position.x, -1.67638e-10f, hit.position.z);
         }
 
-        return transform.position;
+        return new Vector3(UnityEngine.Random.Range(0, 10), -1.67638e-10f, UnityEngine.Random.Range(0, 10));
     }
     private void OnDrawGizmos()
     {

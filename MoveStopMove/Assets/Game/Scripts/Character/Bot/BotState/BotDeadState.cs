@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BotDeadState : IBotState
 {
-    private float despawnTimer = 1.5f;
+    private float despawnTimer = Constants.SpawnAndDespawnTime.Bot_Despawn_Time;
     private float timer;
     private bool isDespawn;
     public void OnEnter(BotStateManager state)
     {
+        IndicatorSpawner.Instance.Despawn(state.BotCtrl.botIndicator.transform.parent);
+        Debug.Log(state.BotCtrl.characterName);
         state.BotCtrl.NavMeshAgent.ResetPath();
         timer = 0;
         isDespawn = false;
@@ -31,11 +33,11 @@ public class BotDeadState : IBotState
             //state.BotCtrl.CharacterSkin.TakeOffClothes();
             OnExit(state);
             //state.SwitchState(state.botIdlingState);
-            state.BotCtrl.transform.position = Vector3.zero;
+            //state.BotCtrl.transform.position = Vector3.zero;
             // state.BotCtrl.NavMeshAgent.enabled = true;
             GameManager.Instance.botCount -= 1;
-            IndicatorSpawner.Instance.Despawn(state.BotCtrl.botIndicator.transform.parent);
-            BotSpawner.Instance.Despawn(state.BotCtrl.transform);
+            //BotSpawner.Instance.Despawn(state.BotCtrl.transform);
+            state.BotCtrl.BotSpawner.Despawn(state.BotCtrl.transform);
             
         }
     }

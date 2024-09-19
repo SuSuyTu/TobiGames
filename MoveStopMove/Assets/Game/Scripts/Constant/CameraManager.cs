@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     public CinemachineVirtualCamera SkinShopCamera => skinShopCamera;
     [SerializeField] protected CinemachineVirtualCamera gamePlayCamera;
     public CinemachineVirtualCamera GamePlayCamera => gamePlayCamera;
+    [SerializeField] protected CinemachineVirtualCamera resultCamera;
+    public CinemachineVirtualCamera ResultCamera => resultCamera;
 
     protected virtual void Awake()
     {
@@ -22,12 +24,21 @@ public class CameraManager : MonoBehaviour
     {
         skinShopCamera.Priority = 10;
         gamePlayCamera.Priority = 5;
+        resultCamera.Priority = 5;
     }
 
     public virtual void SetGamePlayCamera()
     {
         skinShopCamera.Priority = 5;
         gamePlayCamera.Priority = 10;
+        resultCamera.Priority = 5;
+    }
+
+    public virtual void SetResultCamera()
+    {
+        skinShopCamera.Priority = 5;
+        gamePlayCamera.Priority = 5;
+        resultCamera.Priority = 10;
     }
 
     public virtual void ResetGameplayCameraFOV()
